@@ -6,20 +6,21 @@
 .nav{
   display: flex;
   justify-content: center;
+
 }
 .container{
   font-size: 20px;
 }
 .btn{
-  border:solid 1px;
-  background-color: rgb(43, 201, 148);
+  border:solid 1px black;
+  background-color: rgb(85, 202, 163);
   border-radius: 10%;
   font-size: 17px;
 }
 .list {
   list-style: none;
   margin: 0;
-  padding: 30px;
+  padding: 90px;
   display: grid;
   grid-template-columns: repeat(4, 180px);
   grid-gap: 20px;
@@ -37,14 +38,8 @@
 }
 .front__card,
 .back__card {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
   height: 100%;
   width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
   border-radius: 5%;
 }
 
