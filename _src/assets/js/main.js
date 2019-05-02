@@ -36,33 +36,36 @@ function paintCards (arrCard) {
 
     const divFrontImage = document.createElement('div');
     divFrontImage.classList.add('div__front-card');
-    const frontImage = document.createElement('img');
-    frontImage.classList.add('front__card');
-    //frontImage = card.image;
-    frontImage.setAttribute('src', card.image);
-
-
 
     const divBackImage = document.createElement('div');
     divBackImage.classList.add('back__card');
-    const backImage = document.createElement('img');
-    backImage.classList.add('back__card');
-    backImage.src = 'https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB';//urlBackImage;
 
+      if (card.isFront === true) {
+        const frontImage = document.createElement('img');
+        frontImage.classList.add('front__card');
+        //frontImage = card.image;
+        frontImage.setAttribute('src', card.image);
 
+        divFrontImage.appendChild(frontImage);
+        cardLi.appendChild(divFrontImage);
+        cardLi.appendChild(frontImage);
+      } else {
+        const backImage = document.createElement('img');
+        backImage.classList.add('back__card');
+        backImage.src = 'https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB';//urlBackImage;
 
-      divFrontImage.appendChild(frontImage);
-      divBackImage.appendChild(backImage);
-      cardLi.appendChild(divFrontImage);
-      cardLi.appendChild(divBackImage);
-      cardLi.appendChild(frontImage);
-      cardLi.appendChild(backImage);
+        divBackImage.appendChild(backImage);
+        cardLi.appendChild(divBackImage);
+        cardLi.appendChild(backImage);
+      }
       list.appendChild(cardLi);
-
-
-
   }
 }
+
+// const turnAround = (event) => {
+//   let card = event.currentTarget;
+//   card.classList.toggle('');
+// }
 
 function numberCards () {
   const inputValue = getRadioValue();
