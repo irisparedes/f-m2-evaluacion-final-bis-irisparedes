@@ -38,7 +38,7 @@ function paintCards (arrCard) {
     divFrontImage.classList.add('div__front-card');
 
     const divBackImage = document.createElement('div');
-    divBackImage.classList.add('back__card');
+    divBackImage.classList.add('div__back__card');
 
       if (card.isFront === true) {
         const frontImage = document.createElement('img');
@@ -62,6 +62,7 @@ function paintCards (arrCard) {
   }
 }
 
+
 // const turnAround = (event) => {
 //   let card = event.currentTarget;
 //   card.classList.toggle('');
@@ -79,4 +80,5 @@ function numberCards () {
 }
 
 btn.addEventListener('click', numberCards);
+//card.addEventListener('click', paintCards);
 

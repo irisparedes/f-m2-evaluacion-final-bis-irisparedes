@@ -1,1 +1,50 @@
+.title{
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+}
+.nav{
+  display: flex;
+  justify-content: center;
+}
+.container{
+  font-size: 20px;
+}
+.btn{
+  border:solid 1px;
+  background-color: rgb(43, 201, 148);
+  border-radius: 10%;
+  font-size: 17px;
+}
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 180px);
+  grid-gap: 20px;
+  justify-content: center;
+}
+.card {
+  position: relative;
+  border:solid 1px;
+  border-radius: 5%;
+  height: 200px;
+  width: 150px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.front__card,
+.back__card {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 5%;
+}
 
