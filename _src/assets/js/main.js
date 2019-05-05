@@ -69,6 +69,15 @@ function paintCards (arrCard) {
     list.appendChild(cardLi);
   }
 }
+function turnAround (cardJSON) {
+  if(cardJSON !== null);
+  if (cardJSON.isFront === true){
+    cardJSON.isFront = false;
+  }else{
+    cardJSON.isFront = true;
+  }
+}
+
 
 function modifyCards (event) {
   let newCardLI = event.currentTarget;
@@ -76,11 +85,7 @@ function modifyCards (event) {
   for (let i = 0; i < arrData.length; i++) {
     let cardJSON = arrData[i];
     if (parseInt(newCardLI.id) === cardJSON.id) {
-      if (cardJSON.isFront === true){
-        cardJSON.isFront = false;
-      }else{
-        cardJSON.isFront = true;
-      }
+      turnAround(cardJSON);
     }
   }
   paintCards(arrData);
