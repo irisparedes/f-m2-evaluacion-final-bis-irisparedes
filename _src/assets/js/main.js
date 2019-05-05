@@ -30,6 +30,7 @@ function createProperties (arrData) {
     let data = arrData[i];
     data.id = i;
     data.isFront = false;
+    data.isMatched = false;
   }
 }
 
@@ -70,20 +71,59 @@ function paintCards (arrCard) {
   }
 }
 
+function turnAround (cardJSON){
+  if (cardJSON!==null){
+    if (cardJSON.isFront === true){
+      //if(cardJSON.isMatched === false){
+      cardJSON.isFront = false;
+      //}
+    }else{
+      cardJSON.isFront = true;
+    }
+  }
+  return cardJSON;
+}
+
+// function cardsTurnAround () {
+//   let arrCardFront = [];
+//   arrData = JSON.parse(localStorage.getItem('arrDataLS'));
+//   for (let i = 0; i < arrData.length; i++){
+//     let cardJSON = arrData[i];
+//      if (cardJSON.isFront === true){
+//       arrCardFront.push(cardJSON);
+//     }
+//   }
+//   return arrCardFront;
+// }
+
 function modifyCards (event) {
-  let newCardLI = event.currentTarget;
+  let newCardLi = event.currentTarget;
+  let newCardLiId = parseInt(newCardLi.id);
   arrData = JSON.parse(localStorage.getItem('arrDataLS'));
+  console.log(arrData);
   for (let i = 0; i < arrData.length; i++) {
     let cardJSON = arrData[i];
-    if (parseInt(newCardLI.id) === cardJSON.id) {
-      if (cardJSON.isFront === true){
-        cardJSON.isFront = false;
-      }else{
-        cardJSON.isFront = true;
+    if (newCardLiId === cardJSON.id) {
+      if (cardJSON.isMatched===false){
+        cardJSON = turnAround(cardJSON);
+        paintCards(arrData);
+        for (let i = 0; i < arrData.length; i++) {
+          let cardPair = arrData[i];
+          if (cardPair.pair === cardJSON.pair
+            && cardPair.id !== cardJSON.id
+            && cardPair.isFront === true) {
+            cardJSON.isMatched = true;
+            cardPair.isMatched = true;
+          }
+        }
       }
     }
   }
+
+  //let arrCardFront = cardsTurnAround();
+  console.log(arrData);
   paintCards(arrData);
+  localStorage.removeItem('arrDataLS');
   localStorage.setItem('arrDataLS', JSON.stringify(arrData));
 }
 
@@ -94,6 +134,7 @@ function numberCards () {
     .then(response => response.json())
     .then(arrData => {
       createProperties(arrData);
+      localStorage.removeItem('arrDataLS');
       localStorage.setItem('arrDataLS', JSON.stringify(arrData));
       paintCards(arrData);
     });
