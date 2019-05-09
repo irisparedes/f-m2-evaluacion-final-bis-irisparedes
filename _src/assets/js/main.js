@@ -35,7 +35,11 @@ function createProperties (arrData) {
 
 function paintCards (arrCard) {
   list.innerHTML = '';
-  for (const card of arrCard) {
+  let arrNames = ['0','1','2','3','4','5','6','7'];
+  //for (const card of arrCard) {
+  for (let i = 0; i < arrCard.length; i++){
+    const card = arrCard[i];
+    const nameNewNumber = arrNames[i];
 
     const cardLi = document.createElement('li');
     cardLi.classList.add('card');
@@ -49,11 +53,21 @@ function paintCards (arrCard) {
     const divBackImage = document.createElement('div');
     divBackImage.classList.add('div__back__card');
 
+    const namePokemon = document.createElement('div');
+    namePokemon.classList.add('name__pokemon');
+
+    const nameNew = document.createElement('div');
+    nameNew.classList.add('name__new');
+
     if (card.isFront === true) {
       const frontImage = document.createElement('img');
       frontImage.classList.add('front__card');
       frontImage.setAttribute('src', card.image);
+      const contentNamePokemon = document.createTextNode(card.name);
+      const contentNameNew = document.createTextNode(nameNewNumber);
 
+      divFrontImage.appendChild(contentNameNew);
+      divFrontImage.appendChild(contentNamePokemon);
       divFrontImage.appendChild(frontImage);
       cardLi.appendChild(divFrontImage);
       cardLi.appendChild(frontImage);
